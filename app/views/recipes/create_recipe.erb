@@ -1,0 +1,26 @@
+<h2>Create Recipe</h2>
+
+<form action="/recipes" method="POST">
+  <p>
+    <label>Name:</label>
+    <input type="text" name="name">
+  </p>
+  <p>
+    <label>Prep Time (minutes):</label>
+    <input type="number" name="prep_time">
+  </p>
+    <label>Directions:</label>
+  <p>
+    <textarea name="directions" id="directions" cols="30" rows="10"></textarea>
+  </p>
+
+  <p>
+    <label>Ingredients:</label>
+    <% Ingredient.all.each do |ingredient| %>
+      <input type="checkbox" value="<%=ingredient.id%>" name="ingredient_ids[]">
+      <%= ingredient.name%>
+    <% end %>
+  </p>
+
+  <input type="submit" value="Create Recipe">
+</form>

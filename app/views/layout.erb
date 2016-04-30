@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <% if !session[:id] %>
+      <a href="/signup">Sign Up</a>
+      <a href="/login">Login</a>
+    <% else %>
+      <a href="/logout">Log Out</a>
+    <% end %>
+
+    <a href="/recipes">All Recipes</a>
+    <a href="/ingredients">All Ingredients</a>
+
+    <%= yield %>
+  </body>
+
+</html>

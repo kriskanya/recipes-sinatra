@@ -1,0 +1,38 @@
+<h2>All Recipes</h2>
+
+<a href="/recipes/new">Create Recipe</a>
+
+<% @recipes.each_with_index do |recipe, index| %>
+  <h4><%= index+1%>. <%= recipe.name%></h4>
+
+  <p>
+    <label>Ingredients:</label>
+    <% recipe.ingredients.each do |ingredient|%>
+      <ul>
+        <li><%= ingredient.name%></li>
+        <li>Cost: <%= ingredient.cost%></li>
+        <li>Amount: <%= ingredient.amount%></li>
+      </ul>
+    <% end %>
+  </p>
+
+  <p>
+    <label>Prep Time:</label>
+    <%= recipe.prep_time%>
+  </p>
+
+  <p>
+    <label>Directions:</label>
+    <%= recipe.directions%>
+  </p>
+
+  <% if session[:id] == recipe.user_id %>
+    <a href="/recipes/<%=recipe.id%>/edit">Edit Recipe</a>
+    
+    <form action="/recipes/<%=recipe.id%>/delete" method="POST">
+      <input type="hidden" id="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete Recipe">
+    </form>
+
+  <% end %>
+<% end %>

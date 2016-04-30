@@ -1,0 +1,20 @@
+<h2>Edit Recipe</h2>
+<form action="/recipes/<%=@recipe.id%>" method="POST">
+  <input type="hidden" id="hidden" name="_method" value="PATCH">
+
+  <p>
+    <label>Name:</label>
+    <input type="text" name="name" value="<%= @recipe.name%>">
+  </p>
+  <p>
+    <label>Prep Time:</label>
+    <input type="number" name="prep_time" value="<%= @recipe.prep_time%>">
+  </p>
+    <label>Directions:</label>
+  <p>
+    <textarea name="directions" id="directions" cols="30" rows="10"><%= @recipe.directions%></textarea>
+  </p>
+
+  <input type="submit" value="Submit">
+
+</form>
